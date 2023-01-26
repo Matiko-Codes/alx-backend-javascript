@@ -144,3 +144,112 @@ console.log(copiedArray); // Outputs [1, 2, 3]
 ```
 
 In summary, the rest operator is used to capture any remaining parameters passed to a function as an array, while the spread operator allows you to spread the elements of an array or iterable object into separate arguments when calling a function, and also for concatenating and copying arrays and objects.
+
+### String templates
+
+In ES6, template literals (also known as template strings) were introduced as a new way to create strings in JavaScript. They are denoted by backticks (`) instead of single or double quotes and allow you to include expressions inside the string.
+
+Here's an example of a template literal:
+```
+const myName = "John";
+const myAge = 30;
+console.log(`My name is ${myName} and I am ${myAge} years old.`);
+```
+
+The expressions inside the curly braces `(${...})` are evaluated and the result is inserted into the string.
+
+You can also use template literals to create multiline strings:
+```
+const myString = `This is a
+multiline string`;
+console.log(myString);
+```
+
+With template literals, you can also use the `tagged template literals` feature, which allows you to define a function that will be called with the evaluated expressions. The function can then manipulate the evaluated string and return a new one.
+
+```
+function myTag(strings, ...values) {
+    //strings: an array of the string literals
+    //values: an array of the evaluated expressions
+}
+console.log(myTag`My name is ${myName} and I am ${myAge} years old.`);
+```
+
+Template literals are a new way of creating strings in JavaScript, introduced in ES6. They allow you to include expressions inside the string and make it easy to create multiline strings, also they allow you to use tagged template literals, which is a feature that allows you to manipulate the evaluated expressions and returned a new string.
+
+## Object creation and their properties in ES6
+In ES6, there are several new ways to create objects and define their properties:
+
+The `Object.assign()` method allows you to copy properties from one or more source objects to a target object. Here's an example:
+
+```
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+const obj3 = Object.assign({}, obj1, obj2);
+console.log(obj3); // { a: 1, b: 3, c: 4 }
+```
+
+The `Object.create()` method creates a new object, with the specified prototype object and properties. Here's an example:
+
+```
+const prototypeObj = { a: 1 };
+const obj = Object.create(prototypeObj);
+console.log(obj.a); // 1
+```
+
+The `Object.defineProperties()` method allows you to define new or modify existing properties directly on an object, with additional property descriptor options. Here's an example:
+
+```
+const obj = {};
+Object.defineProperties(obj, {
+  a: { value: 1, writable: true },
+  b: { value: 2, enumerable: false }
+});
+console.log(obj); // { a: 1, b: 2 }
+```
+
+The `Object.defineProperty()` method allows you to define a new property directly on an object, or modify an existing property, with additional property descriptor options.
+
+```
+const obj = {};
+Object.defineProperty(obj, 'a', { value: 1, writable: true });
+console.log(obj); // { a: 1 }
+```
+
+One of the most convenient way of creating objects and properties in ES6 is using Object property shorthand and Object destructuring.
+
+### Iterators and for-of loops
+An iterator is an object that defines a `next()` method, which returns an object with two properties: `value` and `done`. The `value` property is the next value in the iteration, and the `done` property is a boolean that indicates whether the iteration has finished.
+
+In JavaScript, any object that implements the `Symbol.iterator` property is considered iterable. This property should be a function that returns an iterator.
+
+For example, arrays are iterable in JavaScript, so you can use the `for-of` loop to iterate over the elements of an array:
+
+```
+const myArray = [1, 2, 3];
+for (const element of myArray) {
+  console.log(element);
+}
+```
+
+The `for-of` loop is a new feature introduced in ES6 that allows you to iterate over the values of an iterable object, such as arrays, strings, maps, and sets. It's similar to the `for-in` loop, but it's designed to work with iterable objects and doesn't include properties from the prototype chain.
+
+You can also use the `for-of` loop to iterate over the characters of a string:
+
+```
+const myString = "hello";
+for (const char of myString) {
+  console.log(char);
+}
+```
+
+or use it to iterate over the entries of a map:
+
+```
+const myMap = new Map([["a", 1], ["b", 2], ["c", 3]]);
+for (const entry of myMap) {
+  console.log(entry);
+}
+```
+
+In summary, an iterator is an object that defines a `next()` method to return the next value in an iteration. JavaScript objects that implement the `Symbol.iterator` property are considered iterable. The `for-of` loop is a new feature introduced in ES6 that allows you to iterate over the values of an iterable object and it's designed to work with iterable objects and doesn't include properties from the prototype chain.
