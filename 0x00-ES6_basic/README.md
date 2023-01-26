@@ -26,3 +26,82 @@ myObject = {name: "Jane"}; // this will throw an error
 
 In summary, use `const` when you want to define a variable that should not be reassigned, use `let` when you know the variable will be reassigned and use `var` when you know the variable will be reassigned and also it will be function scoped.
 
+### Blocked-scoped variables and function-scoped variables
+
+Variables declared using the `let` and `const` keywords are block-scoped, meaning they are only accessible within the block in which they are defined. A block is a piece of code enclosed in curly braces {}.
+
+For example:
+```
+if (true) {
+  let myVariable = "Hello";
+}
+console.log(myVariable); // This will throw an error because myVariable is not defined outside of the block
+```
+Variables declared using the "var" keyword are function-scoped, meaning they are accessible within the entire function in which they are defined, regardless of the block.
+
+For example:
+```
+if (true) {
+  var myVariable = "Hello";
+}
+console.log(myVariable); // This will output "Hello"
+
+```
+When a variable is declared with `let` or `const` inside a loop, it will create a new variable for each iteration so it will not update the variable in the outer scope.
+
+This behavior is useful when you want to limit the scope of a variable to a specific block of code and prevent accidental modification of global or parent scope variables. This can help improve the readability and maintainability of your code by making it clearer where a variable is being used and what its intended purpose is.
+
+## Arrow Functions
+
+An arrow function (also called a "fat arrow function") is a shorthand way of defining a function in JavaScript. They have a more concise syntax and do not have their own `this` or `arguments` bindings.
+
+Here is an example of an arrow function:
+```
+const myFunction = (param) => {
+    return param;
+}
+```
+
+If the function only has one parameter, you can omit the parentheses around the parameter:
+
+```
+const myFunction = param => {
+    return param;
+}
+```
+
+When an arrow function only has one line of code in its body, you can omit the curly braces and the return keyword:
+
+```
+const myFunction = param => param;
+```
+
+Arrow functions are useful when you want to create a function that is intended to be passed as a callback or used as a method.
+
+For example:
+
+```
+const myArray = [1,2,3,4,5];
+myArray.map(val => val * 2);
+```
+
+As for the default function parameter, you can set a default value to a function parameter, by using the `=` operator.
+
+```
+function greet(name = "John Doe") {
+  console.log("Hello " + name);
+}
+greet(); // "Hello John Doe"
+```
+
+You can also use default parameters for arrow functions
+
+```
+const greet = (name = "John Doe") => {
+    console.log("Hello " + name);
+}
+
+greet(); // "Hello John Doe"
+```
+
+It's worth noting that the default value is only used if the parameter is not provided or is undefined.
