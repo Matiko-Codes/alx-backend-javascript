@@ -105,3 +105,42 @@ greet(); // "Hello John Doe"
 ```
 
 It's worth noting that the default value is only used if the parameter is not provided or is undefined.
+
+### Rest and Spread operators
+
+The "rest" operator (denoted by three dots: `...`) is used to capture any remaining parameters passed to a function. The rest operator is typically used in conjunction with the spread operator (also denoted by three dots: `...`).
+
+The "rest" operator allows you to pass an arbitrary number of arguments to a function as an array. Here's an example:
+ ```
+function myFunction(param1, ...rest) {
+  console.log(param1); // Outputs the first argument
+  console.log(rest); // Outputs an array of the remaining arguments
+}
+myFunction(1, 2, 3, 4);
+```
+
+The "spread" operator allows you to spread the elements of an array or iterable object into separate arguments when calling a function. Here's an example:
+
+```
+const myArray = [1, 2, 3];
+console.log(Math.max(...myArray)); // Outputs 3
+```
+
+The spread operator also allows you to easily concatenate arrays, for example:
+
+```
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const concatenatedArray = [...array1, ...array2];
+console.log(concatenatedArray); // Outputs [1, 2, 3, 4, 5, 6]
+```
+
+You can also use the spread operator to copy arrays or objects.
+
+```
+const myArray = [1, 2, 3];
+const copiedArray = [...myArray];
+console.log(copiedArray); // Outputs [1, 2, 3]
+```
+
+In summary, the rest operator is used to capture any remaining parameters passed to a function as an array, while the spread operator allows you to spread the elements of an array or iterable object into separate arguments when calling a function, and also for concatenating and copying arrays and objects.
