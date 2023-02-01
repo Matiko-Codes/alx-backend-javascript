@@ -11,43 +11,47 @@ interface Student {
     firstName: "John",
     lastName: "Doe",
     age: 25,
-    location: "New York"
+    location: "Nairobi"
   };
   
   const student2: Student = {
-    firstName: "Jane",
-    lastName: "Doe",
-    age: 28,
-    location: "London"
+    firstName: "Alex",
+    lastName: "Sanchez",
+    age: 29,
+    location: "Cairo"
   };
   
   // Store the two student objects in an array named studentsList
   const studentsList: Student[] = [student1, student2];
   
-  // Create a table element
-  const table = document.createElement("table");
+  /**
+   * Function to render a table from the studentsList array
+   * @param {Student[]} studentsList - an array of Student objects
+   */
+  const renderTable = (studentsList: Student[]): void => {
+    // Create a table element
+    const table = document.createElement("table");
+    const headRow = document.createElement("tr");
+    table.appendChild(headRow);
   
-  // Iterate through each student in the studentsList array
-  studentsList.forEach(student => {
-    // Create a row element
-    const row = document.createElement("tr");
+    // Insert headers for the table
+    headRow.innerHTML = "<th>First Name</th><th>Location</th>";
   
-    // Create two cells, one for the first name and one for the location
-    const firstNameCell = document.createElement("td");
-    const locationCell = document.createElement("td");
+    // Iterate through each student in the studentsList array
+    studentsList.forEach(student => {
+      // Create a row element
+      const row = document.createElement("tr");
   
-    // Set the innerHTML of the cells to the first name and location of the current student
-    firstNameCell.innerHTML = student.firstName;
-    locationCell.innerHTML = student.location;
+      // Create two cells, one for the first name and one for the location
+      row.innerHTML = `<td>${student.firstName}</td><td>${student.location}</td>`;
   
-    // Append the cells to the row
-    row.appendChild(firstNameCell);
-    row.appendChild(locationCell);
+      // Append the row to the table
+      table.appendChild(row);
+    });
   
-    // Append the row to the table
-    table.appendChild(row);
-  });
+    // Append the table to the body of the HTML document
+    document.body.appendChild(table);
+  };
   
-  // Append the table to the body of the HTML document
-  document.body.appendChild(table);
-  
+  // Call the renderTable function to render the table
+  renderTable(studentsList);  
