@@ -1,0 +1,1 @@
+This my read me for the Typescript assignment
